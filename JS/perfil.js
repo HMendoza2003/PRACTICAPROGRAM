@@ -143,7 +143,7 @@ document.querySelector('#btn-cerrar-sesion').addEventListener('click', function(
   localStorage.removeItem('sesion')
   // Eliminamos la sesión del localStorage
 
-  window.location.href = 'practica.html'
+  window.location.href = 'index.html'
   // Redirigimos al inicio
 })
 
