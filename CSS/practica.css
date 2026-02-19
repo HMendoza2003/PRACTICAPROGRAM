@@ -1,0 +1,704 @@
+/* =============================================
+   VARIABLES CSS
+   Definimos colores y valores globales aquí.
+   Si quiero cambiar el color principal del sitio,
+   solo lo cambio en UN lugar.
+   ============================================= */
+
+:root {
+  --color-primario: #6C63FF;     /* morado principal */
+  --color-secundario: #4CAF50;   /* verde para botones de acción */
+  --color-fondo: #F4F6F9;        /* gris muy claro para el fondo */
+  --color-texto: #2D2D2D;        /* casi negro para texto */
+  --color-blanco: #FFFFFF;
+  --sombra: 0 2px 8px rgba(0, 0, 0, 0.1); /* sombra suave */
+  --radio-borde: 12px;           /* esquinas redondeadas */
+}
+
+/* =============================================
+   RESET Y BASE
+   Los navegadores tienen estilos por defecto
+   (márgenes, padding, etc). Los reseteamos
+   para partir desde cero y tener control total.
+   ============================================= */
+
+* {
+  /* El asterisco (*) selecciona TODOS los elementos */
+  margin: 0;
+  padding: 0;
+
+  /* box-sizing: border-box hace que el padding y border
+     se cuenten DENTRO del ancho del elemento, no fuera.
+     Esto evita cálculos matemáticos molestos. */
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  /* font-family intenta usar la primera fuente.
+     Si no existe, prueba la siguiente. sans-serif
+     es el fallback genérico del sistema. */
+
+  background-color: var(--color-fondo);
+  /* var(--nombre) usa la variable que definimos arriba */
+
+  color: var(--color-texto);
+  line-height: 1.6;
+  /* line-height controla el espacio entre líneas de texto.
+     1.6 significa 1.6 veces el tamaño de la fuente. */
+}
+
+/* =============================================
+   HEADER Y NAVEGACIÓN
+   ============================================= */
+
+header {
+  background-color: var(--color-blanco);
+  box-shadow: var(--sombra);
+  /* box-shadow agrega sombra a cualquier elemento.
+     Formato: offset-x offset-y blur color */
+
+  position: sticky;
+  /* sticky hace que el header se quede fijo
+     en la parte superior al hacer scroll */
+
+  top: 0;
+  /* necesario para que sticky funcione:
+     "quédate pegado a 0px del tope" */
+
+  z-index: 100;
+  /* z-index controla qué elemento queda "encima"
+     cuando se superponen. Mayor número = más arriba. */
+}
+
+.nav-container {
+  max-width: 1100px;
+  /* el contenido no se estira más de 1100px
+     aunque la pantalla sea más ancha */
+
+  margin: 0 auto;
+  /* margin: 0 auto centra el contenedor horizontalmente.
+     0 = sin margen arriba/abajo. auto = igual a los lados. */
+
+  padding: 16px 24px;
+  /* 16px arriba y abajo, 24px izquierda y derecha */
+
+  display: flex;
+  /* Flexbox: convierte los hijos directos en elementos
+     flexibles que podemos posicionar fácilmente */
+
+  justify-content: space-between;
+  /* pone el máximo espacio posible ENTRE los hijos.
+     Resultado: logo a la izquierda, nav a la derecha */
+
+  align-items: center;
+  /* centra los hijos verticalmente */
+}
+
+.logo {
+  font-size: 1.4rem;
+  font-weight: 700;
+  /* font-weight: 700 = negrita. Va de 100 (muy delgado)
+     a 900 (muy grueso). 400 es normal, 700 es bold. */
+
+  color: var(--color-primario);
+  text-decoration: none;
+  /* los <a> tienen subrayado por defecto. Esto lo quita. */
+}
+
+nav ul {
+  /* Este selector significa: el <ul> que está dentro de <nav> */
+  list-style: none;
+  /* quita las viñetas (bullets) de la lista */
+
+  display: flex;
+  gap: 8px;
+  /* gap es el espacio entre los hijos flex.
+     Mucho más limpio que usar margin en cada uno. */
+}
+
+nav ul li a {
+  /* El <a> dentro de <li> dentro de <ul> dentro de <nav> */
+  text-decoration: none;
+  color: var(--color-texto);
+  padding: 8px 16px;
+  border-radius: var(--radio-borde);
+  font-weight: 500;
+
+  transition: background-color 0.2s, color 0.2s;
+  /* transition anima los cambios de propiedad.
+     Formato: propiedad duración.
+     Cuando el color cambie, lo hará en 0.2 segundos
+     suavemente, no de golpe. */
+}
+
+nav ul li a:hover {
+  /* :hover es una pseudo-clase. Se activa cuando
+     el usuario pone el cursor sobre el elemento. */
+  background-color: var(--color-primario);
+  color: var(--color-blanco);
+}
+
+/* =============================================
+   SECCIÓN HERO
+   ============================================= */
+
+.hero {
+  text-align: center;
+  padding: 64px 24px;
+  background: linear-gradient(135deg, #6C63FF 0%, #4CAF50 100%);
+  /* linear-gradient crea un degradado.
+     135deg = dirección diagonal.
+     Empieza en morado y termina en verde. */
+
+  color: var(--color-blanco);
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  /* rem es relativo al tamaño de fuente raíz (root).
+     Si el root es 16px, entonces 2.5rem = 40px.
+     Es mejor que px porque respeta las preferencias
+     de accesibilidad del usuario. */
+
+  margin-bottom: 16px;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  margin-bottom: 32px;
+  opacity: 0.9;
+  /* opacity va de 0 (invisible) a 1 (completamente visible).
+     0.9 = ligeramente transparente, se ve más suave. */
+}
+
+.buscador {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.buscador input {
+  flex: 1;
+  /* flex: 1 hace que el input ocupe todo el espacio
+     disponible que el botón no usa. */
+
+  padding: 12px 20px;
+  border: none;
+  border-radius: var(--radio-borde);
+  font-size: 1rem;
+  outline: none;
+  /* outline es el borde azul que aparece al hacer
+     clic en un input. Lo quitamos porque le daremos
+     nuestro propio estilo de foco. */
+}
+
+.buscador input:focus {
+  /* :focus se activa cuando el usuario hace clic
+     en el input y está escribiendo */
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5);
+}
+
+.buscador button {
+  padding: 12px 24px;
+  background-color: var(--color-blanco);
+  color: var(--color-primario);
+  border: none;
+  /* los botones tienen borde por defecto, lo quitamos */
+
+  border-radius: var(--radio-borde);
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  /* cursor: pointer cambia el cursor a una mano
+     cuando el usuario pasa sobre el botón */
+
+  transition: transform 0.1s;
+}
+
+.buscador button:hover {
+  transform: scale(1.05);
+  /* transform: scale() escala el elemento.
+     1.05 = 5% más grande. Da sensación de que
+     el botón "respira" al pasar el cursor. */
+}
+
+/* =============================================
+   FEED Y GRID DE TARJETAS
+   ============================================= */
+
+.feed {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 48px 24px;
+}
+
+.feed h2 {
+  font-size: 1.8rem;
+  margin-bottom: 32px;
+  color: var(--color-texto);
+}
+
+.grid-programas {
+  display: grid;
+  /* CSS Grid es para layouts de 2 dimensiones (filas Y columnas).
+     Flexbox es mejor para 1 dimensión (fila O columna).
+     Para una cuadrícula de tarjetas, Grid es perfecto. */
+
+  grid-template-columns: repeat(3, 1fr);
+  /* repeat(3, 1fr) = crea 3 columnas.
+     1fr = "1 fracción del espacio disponible".
+     Las 3 columnas se reparten el espacio por igual. */
+
+  gap: 24px;
+}
+
+/* =============================================
+   TARJETAS
+   ============================================= */
+
+.tarjeta {
+  background-color: var(--color-blanco);
+  border-radius: var(--radio-borde);
+  box-shadow: var(--sombra);
+  overflow: hidden;
+  /* overflow: hidden hace que el contenido que
+     sobresalga de la caja (como las esquinas de
+     la imagen) quede oculto. Esto hace que la imagen
+     respete el border-radius de la tarjeta. */
+
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+  /* flex-direction: column apila los hijos
+     verticalmente (imagen arriba, contenido abajo) */
+}
+
+.tarjeta:hover {
+  transform: translateY(-4px);
+  /* translateY mueve el elemento verticalmente.
+     -4px = 4 píxeles hacia arriba.
+     Con la transition, da efecto de "levitar". */
+
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.tarjeta img {
+  width: 100%;
+  /* la imagen ocupa el 100% del ancho de la tarjeta */
+
+  height: 180px;
+  object-fit: cover;
+  /* object-fit: cover hace que la imagen llene
+     el espacio sin deformarse. Si sobra imagen,
+     la recorta. Como "background-size: cover" pero para <img>. */
+}
+
+.tarjeta-contenido {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  /* flex: 1 hace que este div ocupe todo el espacio
+     vertical restante de la tarjeta. Esto asegura
+     que todas las tarjetas tengan la misma altura. */
+}
+
+.categoria {
+  display: inline-block;
+  background-color: rgba(108, 99, 255, 0.1);
+  /* rgba permite colores con transparencia.
+     El 4to valor (0.1) es la opacidad: 10% de color,
+     90% transparente. Resultado: fondo morado muy suave. */
+
+  color: var(--color-primario);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.tarjeta-contenido h3 {
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+  color: var(--color-texto);
+}
+
+.tarjeta-contenido p {
+  color: #666;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  flex: 1;
+  /* flex: 1 en el párrafo hace que empuje el footer
+     de la tarjeta hacia abajo, sin importar cuánto
+     texto tenga. Todas las tarjetas quedan alineadas. */
+}
+
+.tarjeta-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #eee;
+  /* borde superior sutil que separa el footer
+     del contenido de la tarjeta */
+}
+
+.fecha {
+  font-size: 0.8rem;
+  color: #999;
+}
+
+.btn-interes {
+  background-color: var(--color-primario);
+  color: var(--color-blanco);
+  border: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.btn-interes:hover {
+  background-color: #5a52d5;
+  /* versión más oscura del morado principal */
+  transform: scale(1.05);
+}
+
+/* =============================================
+   FOOTER
+   ============================================= */
+
+footer {
+  text-align: center;
+  padding: 32px;
+  background-color: var(--color-blanco);
+  color: #999;
+  font-size: 0.9rem;
+  border-top: 1px solid #eee;
+  margin-top: 48px;
+}
+
+/* =============================================
+   RESPONSIVE — Media Queries
+   Cambia el diseño según el tamaño de pantalla
+   ============================================= */
+
+@media (max-width: 768px) {
+  /* Todo lo que está aquí SOLO se aplica cuando
+     la pantalla mide 768px o menos (tablets y celulares) */
+
+  .grid-programas {
+    grid-template-columns: 1fr;
+    /* En celular: 1 sola columna en vez de 3 */
+  }
+
+  nav ul {
+    display: none;
+    /* Ocultamos la navegación en móvil.
+       En Módulo 3 haremos un menú hamburguesa con JS. */
+  }
+
+  .hero h1 {
+    font-size: 1.8rem;
+    /* Título más pequeño en celular */
+  }
+}
+
+@media (max-width: 1024px) and (min-width: 769px) {
+  /* Solo para tablets (entre 769px y 1024px) */
+  .grid-programas {
+   grid-template-columns: repeat(2, 1fr);
+    /* En tablet: 2 columnas en vez de 3 */
+  }
+}
+/* Estado activo del botón Me interesa */
+.btn-interes.activo {
+/* Este selector significa: un .btn-interes
+     que TAMBIÉN tenga la clase .activo */
+background-color: #4CAF50;
+}
+
+/* Botón menú hamburguesa — solo visible en móvil */
+.btn-menu {
+  display: none;
+  /* Oculto por defecto en pantallas grandes */
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--color-primario);
+}
+
+@media (max-width: 768px) {
+  .btn-menu {
+    display: block;
+    /* Visible solo en móvil */
+  }
+}
+.sin-resultados {
+  text-align: center;
+  color: #999;
+  font-size: 1.1rem;
+  padding: 48px;
+  grid-column: 1 / -1;
+  /* grid-column: 1 / -1 hace que este párrafo
+     ocupe TODAS las columnas del grid.
+     Sin esto quedaría en una sola columna. */
+}
+/* =============================================
+   FORMULARIO
+   ============================================= */
+
+.formulario-seccion {
+  max-width: 600px;
+  margin: 48px auto;
+  padding: 0 24px;
+}
+
+.formulario-seccion h1 {
+  font-size: 2rem;
+  margin-bottom: 8px;
+}
+
+.formulario-seccion > p {
+  color: #666;
+  margin-bottom: 32px;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 24px;
+}
+
+label {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--color-texto);
+}
+
+input[type="text"],
+input[type="url"],
+input[type="date"],
+select,
+textarea {
+  padding: 12px 16px;
+  border: 2px solid #e0e0e0;
+  border-radius: var(--radio-borde);
+  font-size: 1rem;
+  font-family: inherit;
+  transition: border-color 0.2s;
+  outline: none;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--color-primario);
+}
+
+textarea {
+  resize: vertical;
+  /* resize: vertical permite al usuario
+     cambiar la altura pero no el ancho */
+}
+
+small {
+  color: #999;
+  font-size: 0.8rem;
+}
+
+.error {
+  color: #e53935;
+  font-size: 0.85rem;
+  display: none;
+  /* oculto por defecto */
+}
+
+.error.visible {
+  display: block;
+  /* visible cuando JS agrega la clase */
+}
+
+.preview-imagen {
+  border-radius: var(--radio-borde);
+  overflow: hidden;
+  border: 2px solid #e0e0e0;
+}
+
+.preview-imagen img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+.oculto {
+  display: none;
+}
+
+.btn-submit {
+  width: 100%;
+  padding: 16px;
+  background-color: var(--color-primario);
+  color: white;
+  border: none;
+  border-radius: var(--radio-borde);
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.btn-submit:hover {
+  background-color: #5a52d5;
+  transform: scale(1.02);
+}
+/* =============================================
+   AUTH — Login y Registro
+   ============================================= */
+
+.auth-seccion {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  padding: 24px;
+}
+
+.auth-card {
+  background: var(--color-blanco);
+  border-radius: var(--radio-borde);
+  box-shadow: var(--sombra);
+  width: 100%;
+  max-width: 420px;
+  overflow: hidden;
+}
+
+.auth-tabs {
+  display: flex;
+}
+
+.auth-tab {
+  flex: 1;
+  padding: 16px;
+  background: #f4f4f4;
+  border: none;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  color: #999;
+  transition: background 0.2s, color 0.2s;
+}
+
+.auth-tab.activo {
+  background: var(--color-blanco);
+  color: var(--color-primario);
+  border-bottom: 3px solid var(--color-primario);
+}
+
+.auth-form {
+  padding: 32px;
+}
+
+.error-general {
+  display: block;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.btn-cerrar-sesion {
+  background: none;
+  border: 2px solid #e53935;
+  color: #e53935;
+  padding: 8px 16px;
+  border-radius: var(--radio-borde);
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.2s, color 0.2s;
+}
+
+.btn-cerrar-sesion:hover {
+  background: #e53935;
+  color: white;
+}
+
+/* =============================================
+   PERFIL
+   ============================================= */
+
+.perfil-header {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  max-width: 1100px;
+  margin: 48px auto 0;
+  padding: 0 24px;
+}
+
+.perfil-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--color-primario);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  font-weight: 700;
+  flex-shrink: 0;
+  /* flex-shrink: 0 evita que el avatar
+     se encoja en pantallas pequeñas */
+}
+
+.perfil-info h1 {
+  font-size: 1.6rem;
+  margin-bottom: 4px;
+}
+
+.perfil-info p {
+  color: #666;
+  margin-bottom: 8px;
+}
+
+#perfil-contador-programas {
+  background: rgba(108, 99, 255, 0.1);
+  color: var(--color-primario);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.btn-eliminar {
+  background: #fff0f0;
+  color: #e53935;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-eliminar:hover {
+  background: #e53935;
+  color: white;
+}
+
+.sin-programas {
+  text-align: center;
+  padding: 48px;
+  grid-column: 1 / -1;
+  color: #999;
+}

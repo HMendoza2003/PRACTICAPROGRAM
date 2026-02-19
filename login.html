@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iniciar Sesión — SocioJoven</title>
+  <link rel="stylesheet" href="./CSS/practica.css">
+</head>
+<body>
+
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="logo">🌟 SocioJoven</a>
+      <nav>
+        <ul>
+          <li><a href="practica.html">Inicio</a></li>
+          <li><a href="subir.html">Subir Programa</a></li>
+          <li><a href="perfil.html">Mi Perfil</a></li>
+          <li><a href="login.html">Iniciar Sesión</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="auth-seccion">
+
+      <div class="auth-card">
+
+        <!-- Pestañas para alternar entre login y registro -->
+        <div class="auth-tabs">
+          <button class="auth-tab activo" id="tab-login">
+            Iniciar Sesión
+          </button>
+          <button class="auth-tab" id="tab-registro">
+            Registrarse
+          </button>
+        </div>
+
+        <!-- ===== FORMULARIO LOGIN ===== -->
+        <form id="form-login" class="auth-form" novalidate>
+
+          <div class="campo">
+            <label for="login-email">Correo electrónico</label>
+            <input
+              type="email"
+              id="login-email"
+              placeholder="tu@correo.com"
+            >
+            <!-- type="email" valida formato de email -->
+            <span class="error" id="error-login-email"></span>
+          </div>
+
+          <div class="campo">
+            <label for="login-password">Contraseña</label>
+            <input
+              type="password"
+              id="login-password"
+              placeholder="Tu contraseña"
+            >
+            <!-- type="password" oculta los caracteres -->
+            <span class="error" id="error-login-password"></span>
+          </div>
+
+          <span class="error error-general" id="error-login-general"></span>
+          <!-- Error general para "credenciales incorrectas" -->
+
+          <button type="submit" class="btn-submit">
+            Iniciar Sesión
+          </button>
+
+        </form>
+
+        <!-- ===== FORMULARIO REGISTRO ===== -->
+        <!-- class="auth-form oculto" → oculto al inicio -->
+        <form id="form-registro" class="auth-form oculto" novalidate>
+
+          <div class="campo">
+            <label for="reg-nombre">Nombre completo</label>
+            <input
+              type="text"
+              id="reg-nombre"
+              placeholder="Tu nombre"
+            >
+            <span class="error" id="error-reg-nombre"></span>
+          </div>
+
+          <div class="campo">
+            <label for="reg-email">Correo electrónico</label>
+            <input
+              type="email"
+              id="reg-email"
+              placeholder="tu@correo.com"
+            >
+            <span class="error" id="error-reg-email"></span>
+          </div>
+
+          <div class="campo">
+            <label for="reg-password">Contraseña</label>
+            <input
+              type="password"
+              id="reg-password"
+              placeholder="Mínimo 6 caracteres"
+            >
+            <span class="error" id="error-reg-password"></span>
+          </div>
+
+          <div class="campo">
+            <label for="reg-confirmar">Confirmar contraseña</label>
+            <input
+              type="password"
+              id="reg-confirmar"
+              placeholder="Repite tu contraseña"
+            >
+            <span class="error" id="error-reg-confirmar"></span>
+          </div>
+
+          <button type="submit" class="btn-submit">
+            Crear cuenta
+          </button>
+
+        </form>
+
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 Sociedad de Jóvenes. Hecho con ❤️ por la comunidad.</p>
+  </footer>
+
+  <script src="js/login.js"></script>
+
+</body>
+</html>

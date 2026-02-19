@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sociedad de Jóvenes - Subir Programas</title>
+    <link rel="stylesheet" href="./CSS/practica.css">
+</head>
+<body>  
+    <header>
+        <div class="nav-container">
+            <!-- Logo / nombre de la plataforma -->
+            <a href="index.html" class="logo">🌟 SocioJoven</a>
+            <!-- Navegación principal -->
+            <nav>
+                <ul>
+                    <li><a href="practica.html">Inicio</a></li>
+                    <li><a href="subir.html">Subir Programas</a></li>
+                    <li><a href="perfil.html">Mi Perfil</a></li>
+                    <li><a href="login.html">Iniciar Sesión</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Sección hero: título de bienvenida -->
+        <section class="formulario-seccion">
+            <h1>Subir un Programa</h1>
+            <p>Comparte tus iniciativas y proyectos con la comunidad.</p>
+            <form id="formulario-subir" novalidate>
+                <div class="campo">
+                    <label for="titulo">Titulo del programa:</label>
+                    <input type="text" id="titulo" placeholder="Ej: Taller de Liderazgo Juvenil" maxlength="60">
+                    <span class="error" id="error-titulo"></span>
+                </div>
+                <div class="campo">
+                    <label for="categoria">Categoría:</label>
+                    <select id="categoria">
+                        <option value="Liderazgo">Liderazgo</option>
+                        <option value="Recreación">Recreación</option>
+                        <option value="Servicio">Servicio</option>
+                        <option value="Arte">Arte</option>
+                        <option value="Deporte">Deporte</option>
+                        <option value="Tecnología">Tecnología</option>
+                        <option value="Educación">Educación</option>
+                        <option value="Salud">Salud</option>
+                        <option value="Finanza">Finanzas</option>
+                    </select>
+                    <span class="error" id="error-categoria"></span>
+                </div>
+                <div class="campo">
+                    <label for="descripcion">Descripción:</label>
+                    <textarea id="descripcion" placeholder="Describe tu programa en al menos 20 caracteres..." rows="4"></textarea>
+                    <span class="error" id="error-descripcion"></span>
+                </div>
+                <div class="campo">
+                    <label for="fecha">Fecha del Programa:</label>
+                    <input type="date" id="fecha">
+                    <span class="error" id="error-fecha"></span>
+                </div>
+                <div class="campo">
+                    <label for="imagen">URL de imagen</label> 
+                    <input type="url" id="imagen" placeholder="https://ejemplo.com/imagen.jpg">
+                    <small>Opcional. Si no proporcionas una imagen, se usará una por defecto.</small>
+                </div>
+                <div class="campo">
+                    <div id="preview-imagen" class="preview-imagen oculto">
+                        <img id="img-preview" src="" alt="Preview"
+                    </div>
+                </div>
+                <button type="submit" class="btn-submit">
+                🚀 Publicar Programa
+                </button>
+            </form>
+        </section>
+    </main>
+
+    <!-- ===== FOOTER: pie de página ===== -->
+    <footer>
+        <p>© 2026 Sociedad de Jóvenes. Hecho con ❤️ por la comunidad.</p>
+    </footer>
+
+    <!-- Aquí conectaremos nuestro JS en el Módulo 3 -->
+    <script src="./JS/subir.js"></script>
+</body>
+</html>
